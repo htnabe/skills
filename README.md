@@ -34,7 +34,7 @@
 `gh skill` を使用して、ユーザースコープにインストールできます。
 
 ```bash
-gh skill install htnabe/skills implementation --scope user
+gh skill install htnabe/skills feature-implementation --scope user
 gh skill install htnabe/skills adversarial-review --scope user
 ```
 
