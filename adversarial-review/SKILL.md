@@ -1,6 +1,7 @@
 ---
 name: adversarial-review
 description: "Independent adversarial review skill for implemented features, behavior changes, and bug fixes. Use after implementation to challenge correctness, security, maintainability, readability, test coverage, and regression safety. Reviews the implementation without modifying code and produces actionable findings."
+license: MIT
 ---
 
 # Adversarial Review

@@ -3,6 +3,7 @@ name: git-commit-push-pr
 description: "Create commits with conventional commits and gitemoji, push when permission is granted, and create pull requests with gh using a PR template. Use when finishing changes and preparing review-ready delivery."
 argument-hint: "Scope, branch, and PR target details"
 user-invocable: true
+license: MIT
 ---
 
 # Git Commit, Push, and PR Workflow

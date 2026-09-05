@@ -1,6 +1,7 @@
 ---
 name: feature-implementation
 description: "Workflow skill for implementing features, behavior changes, and bug fixes using a test-driven development approach. Use when: implementing a new feature, changing existing behavior, or fixing a bug that requires code changes. Guides repository inspection, requirements analysis, planning, TDD, implementation, refactoring, and validation."
+license: MIT
 ---
 
 # Feature Implementation Skill

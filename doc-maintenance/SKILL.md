@@ -1,6 +1,7 @@
 ---
 name: doc-maintenance
 description: "Workflow skill for proactively updating stale docs and fixing docs path/layout drift. Use when: docs in README.md or docs/** are outdated, command usage has changed, or documentation file/folder placement changed."
+license: MIT
 ---
 
 # Documentation Maintenance Skill
