@@ -1,128 +1,55 @@
 # Review Criteria
 
-This document defines the **minimum common review criteria** for adversarial reviews.
+Use this technology- and project-agnostic checklist for applicable dimensions. Repository-specific criteria may be stricter and take precedence.
 
-It is intentionally technology- and project-agnostic.
+## Correctness and Requirements
 
-Projects may define additional review criteria based on their architecture, domain, security requirements, runtime environment, and development practices.
+- Does the implementation satisfy explicit requirements and acceptance criteria?
+- Does it behave correctly for normal, invalid, and boundary inputs?
+- Are state transitions, return values, side effects, ordering, and asynchronous behavior correct?
+- Is every meaningful requirement implemented and tested?
 
----
+## Regression Safety and Scope
 
-## 1. Correctness
+- Could existing functionality, public APIs, CLI behavior, configuration, data formats, error codes, or environment variables break?
+- Are affected callers and code paths still valid?
+- Does the change stay within scope without unrelated refactoring, over-engineering, unjustified dependencies, or configuration changes?
+- Is a regression test present when needed?
 
-* [ ] Does the implementation satisfy the stated requirements?
-* [ ] Does it behave correctly in the normal case?
-* [ ] Are important boundary and edge cases handled?
-* [ ] Are invalid or unexpected inputs handled appropriately?
-* [ ] Does error behavior match the intended behavior?
-* [ ] Are existing behaviors preserved where they should be?
+## Test Quality
 
----
+- Do tests express observable behavior?
+- Do they cover important success, failure, edge, and regression cases?
+- Would they fail if the implementation were incorrectly changed?
+- Are assertions meaningful rather than implementation-detail coupled?
+- Do mocks hide relevant failures?
 
-## 2. Regression Safety
+## Security
 
-* [ ] Could the change break existing functionality?
-* [ ] Are affected existing code paths still valid?
-* [ ] Are public interfaces, configuration, or data formats unintentionally changed?
-* [ ] Is there an appropriate regression test for the changed behavior when needed?
+Where applicable, consider:
 
----
+- untrusted input, injection, command execution, path traversal, unsafe file operations, and unsafe deserialization
+- authentication, authorization, permissions, insecure defaults, and trust-boundary violations
+- secret exposure, sensitive-data leakage, logging, dependency risks, and denial of service
 
-## 3. Test Quality
+Report a security concern only with a plausible attack or failure path and meaningful risk.
 
-* [ ] Are the important behaviors covered by tests?
-* [ ] Do tests verify observable behavior rather than only implementation details?
-* [ ] Are important failure and edge cases tested?
-* [ ] Would the tests actually fail if the implementation were incorrectly changed?
-* [ ] Is there unnecessary or misleading test coverage?
+## Error Handling and Resources
 
----
+- Are expected and unexpected errors propagated or reported correctly?
+- Are errors swallowed or failures reported as success?
+- Are partial failures, cleanup, retry behavior, and user-facing messages intentional?
+- Are performance costs, repeated work, memory growth, resource leaks, and external requests relevant and controlled?
 
-## 4. Security
+## Maintainability and Readability
 
-Consider security risks relevant to the implementation.
+- Are responsibilities and abstractions appropriate?
+- Is duplication, coupling, hidden state, or brittle configuration creating meaningful future cost?
+- Are names, control flow, constants, assumptions, and comments clear and accurate?
+- Is the code straightforward rather than needlessly clever?
 
-* [ ] Is untrusted input handled safely?
-* [ ] Could the change expose sensitive information?
-* [ ] Could the change introduce an unintended security boundary violation?
-* [ ] Are permissions, access control, or authentication concerns handled where applicable?
-* [ ] Are unsafe operations or dependencies introduced where applicable?
+## Project-Specific Criteria
 
-If a category is not applicable to the project or change, skip it.
+Before completing the review, check repository instructions, contribution and architecture documentation, security requirements, coding standards, test strategy, and CI/CD requirements. Apply more restrictive project-specific criteria when present.
 
----
-
-## 5. Error Handling
-
-* [ ] Are expected failures handled appropriately?
-* [ ] Are errors propagated or reported correctly?
-* [ ] Are errors accidentally swallowed?
-* [ ] Can a failed operation be incorrectly reported as successful?
-* [ ] Are partial failures or cleanup concerns handled where applicable?
-
----
-
-## 6. Maintainability
-
-* [ ] Is the implementation reasonably easy to modify?
-* [ ] Are responsibilities appropriately separated?
-* [ ] Is unnecessary duplication introduced?
-* [ ] Is unnecessary complexity introduced?
-* [ ] Does the implementation follow the existing project's conventions where appropriate?
-
-Do not require refactoring solely for stylistic preference.
-
----
-
-## 7. Readability
-
-* [ ] Are names clear and meaningful?
-* [ ] Is the control flow understandable?
-* [ ] Are important assumptions apparent from the code?
-* [ ] Are comments accurate and useful where comments are needed?
-* [ ] Is there unnecessarily clever or obscure code?
-
----
-
-## 8. Scope
-
-* [ ] Does the change stay within the requested scope?
-* [ ] Are unrelated files or behaviors changed unnecessarily?
-* [ ] Are new dependencies or configuration changes justified?
-* [ ] Is there unnecessary over-engineering?
-
----
-
-## 9. Project-Specific Criteria
-
-Before completing the review, check whether the repository defines additional criteria in:
-
-* repository instructions
-* contribution guidelines
-* architecture documentation
-* security requirements
-* coding standards
-* test strategy
-* CI/CD requirements
-* domain-specific documentation
-
-Project-specific criteria take precedence over this generic checklist when they are more restrictive or specific.
-
----
-
-## Minimum Review Standard
-
-A review should at minimum consider:
-
-1. Correctness
-2. Regression safety
-3. Test quality
-4. Security
-5. Error handling
-6. Maintainability
-7. Readability
-8. Scope
-
-Not every item will apply to every project or change.
-
-The reviewer should use judgment rather than mechanically checking every item.
+Not every item applies to every change. Use judgment rather than mechanically checking every box.
