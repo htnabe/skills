@@ -12,7 +12,7 @@ license: MIT
 
 - Create high-quality commits at meaningful granularity.
 - Push only when permission exists.
-- Create a pull request with gh and return only the review URL.
+- Create a pull request with gh and return only the review URL when PR creation is the final requested outcome.
 - Keep status summaries concise.
 
 ## When to Use
@@ -46,6 +46,8 @@ license: MIT
 1. Validate change scope.
 
 - Confirm what should be included in this commit.
+- Separate pre-existing branch commits, existing worktree edits, and changes made for this task. Review the full base-to-head PR diff, not only the new commit.
+- Before adding adjacent CI, toolchain, example, or documentation cleanup, explain the need and confirm any scope expansion.
 - If scope boundaries are unclear, ask for guidance before staging.
 
 2. Group changes by meaningful granularity.
@@ -84,9 +86,11 @@ license: MIT
 - Use gh pr create with target branch, title, and body from the template.
 - If base branch, reviewers, or labels are unclear, ask for guidance first.
 
-9. Return the review URL only.
+9. Complete the requested outcome.
 
-- After PR creation, output only the PR review URL unless the user asks for more detail.
+- For a PR-only task, output only the PR review URL unless the user asks for more detail.
+- For an explicitly authorized release or deployment, PR creation is an intermediate step. Continue through the requested publication and verification; use [release-publication](../release-publication/SKILL.md) for release-specific safeguards.
+- Do not infer permission to merge, publish, or create release tags merely from permission to commit, push, or open a PR.
 
 ## Decision Gates
 
@@ -102,4 +106,4 @@ license: MIT
 - Multi-change commit includes explicit change list in body.
 - Push happens only with permission.
 - PR is created via gh and uses the template.
-- Final response is concise and includes only the review URL when PR is created.
+- Final response matches the requested outcome: review URL for PR-only work, verified publication results for release work.

@@ -27,6 +27,8 @@ Inspect only relevant areas. Check existing implementation and tests, build and 
 
 Before implementation, create a concise plan covering behavior, tests, implementation, validation, and risks. Resolve ambiguities that could materially change behavior before making irreversible changes.
 
+Distinguish changes already on the branch or in the worktree from changes introduced by this task. A pre-existing validation failure does not automatically authorize adjacent cleanup: explain release or implementation blockers and obtain agreement before expanding into unrelated CI, toolchain, example, or documentation changes. Keep directly required compatibility fixes minimal and explain why they are necessary.
+
 ### 3. Follow TDD
 
 For each meaningful behavior, repeat:
